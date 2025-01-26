@@ -1,0 +1,12 @@
+0. LDI 0 0 //put 0 in reg 0 (less recent term)
+1. STM 0 12 //display 0 on numeric display
+2. LDI 1 1 //put 1 in reg 1 (more recent term)
+3. STM 1 12 //display 1 on numeric display
+
+4. ADD 2 0 1 //add the terms into reg 2 (sum)
+5. SUB 3 2 1 //subtract the most recent term from the sum
+6. JIN 0 //if that's negative, start over; otherwise:
+7. STM 3 12 //display sum on numeric display
+8. MOV 0 1 //more recent term becomes less recent term
+9. MOV 1 2 //sum becomes more recent term
+10. JMP 4 //keep adding

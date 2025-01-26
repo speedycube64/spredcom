@@ -1,0 +1,98 @@
+//initialize stuff:
+0. LDI 7 7 //load position 7 (all spots)
+1. LDI 6 63 //load index 63 (blank character)
+2. STM 6 10 //send blank character to A0
+3. STM 7 11 //clear A0
+
+4. LDI 5 240 //load mask for ULRD
+
+5. XOR 0 0 0 //clear reg 0 
+6. XOR 1 1 1 //clear reg 1
+7. XOR 2 2 2 //clear reg 2
+
+//display 1 on A0 to show that you are entering the first operand:
+8. LDI 7 6 //new position for A0 (rightmost spot)
+9. LDI 6 1 //load character 1
+10. STM 7 11 //send rightmost spot to A0
+11. STM 6 10 //print the number 1
+
+//load first operand:
+12. LDM 0 0 //load numeric input into reg 0
+13. STM 0 12 //display numeric input
+
+//check for any ULRD input:
+14. LDM 3 1 //load button input
+15. AND 4 3 5 //mask input and store in reg 4 for later use
+16. JIZ 12 //reload input if no button pressed
+
+//display 2 on A0 to show that you are entering the second operand:
+17. LDI 6 2 //load character 2
+18. STM 6 10 //print the number 2
+
+//load second operand:
+19. LDM 1 0 //load numeric input into reg 1
+20. STM 1 12 //display numeric input
+
+//check for A input:
+21. LDI 5 1 //load mask for A
+22. LDM 3 1 //load button input
+23. AND 3 3 5 //mask input but keep in reg 3
+24. JIZ 19 //reload input if A button not pressed
+
+//clear and display 0:
+25. STM 2 12 //display 0 while busy
+26. LDI 6 63 //load blank character
+27. STM 6 10 //send blank character to A0
+
+//check for division:
+28. LDI 5 16 //load mask for D
+29. AND 3 4 5 //mask old input for D
+30. JIZ 32 //if no input check for next operation (multiplication)
+31. JMP 51 //otherwise start dividing
+
+//check for multiplication:
+32. LDI 5 32 //load mask for R
+33. AND 3 4 5 //mask old input for R
+34. JIZ 36 //if no input check for next operation (subtraction)
+35. JMP 43 //otherwise start multiplying
+
+//check for subtraction:
+36. LDI 5 64 //load mask for L
+37. AND 3 4 5 //mask old input for L
+38. JIZ 41 //if no input then add; otherwise, subtract
+
+//subtract numbers:
+39. SUB 2 0 1 //subtract
+40. JMP 60
+
+//add numbers:
+41. ADD 2 0 1 //add
+42. JMP 60
+
+//multiply numbers:
+43. LDI 5 1 //load LSB mask into reg 5
+44. AND 4 1 5 //bit mask reg 1 with 1
+45. JIZ 47 //skip adding partial product if selected bit is off
+46. ADD 2 2 0 //add partial product to accumulator
+47. SHR 1 1 //shift reg 1 right
+48. JIZ 60 //if reg 1 is 0 then show result
+49. ADD 0 0 0 //go to the next partial product
+50. JMP 44 //keep adding
+
+//divide numbers:
+51. OR 1 1 1 //check for divisor being 0
+52. JIZ 60 //just show 0 if div/0
+
+53. MOV 3 0 //move dividend to reg 3 to initialize the remainder
+54. SUB 3 3 1 //subtract divisor from remainder
+55. JIN 58 //if remainder < divisor then show result
+56. INC 2 2 //increment quotient
+57. JMP 54 //keep subtracting
+
+58. ADD 3 3 1 //restore last subtraction to get correct remainder
+59. STM 3 10 //show remainder on A0
+
+//show operation result:
+60. STM 2 12 //show result on numeric display
+
+61. JMP 61 //stop the program

@@ -1,0 +1,13 @@
+//initialize 1 and 0
+0. 010 0111 1111 1100 //display 0 in reg 7
+1. 000 0000 1110 0000 //put 0 in reg 0
+2. 100 0111 1110 0000 //display 1 in reg 7
+3. 000 0001 1110 0000 //put 1 in reg 1
+
+//loop
+4. 011 0111 0000 0100 //add the two terms and display the sum
+5. 011 1110 1110 0100 //subtract the most recent term from the sum
+6. 111 0000 0000 0000 //if that's negative, start over; otherwise
+7. 000 0000 0010 0000 //put more recent term in reg 0
+8. 000 0001 1110 0000 //put sum in reg 1
+9. 110 0100 0000 0000 //keep adding

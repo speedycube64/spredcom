@@ -1,0 +1,97 @@
+//clear screen:
+0. 101 0000 0000 0010 //load screen clear signal
+1. 111 1000 0000 1111 //send to screen
+
+//load words left count:
+//to save program memory, i reuse the code for printing a word
+//and use a counter to know when to stop
+//this counter will be 1 after printing "hello" and 0 after "world"
+2. 101 0010 0000 0010 
+
+//load hello:
+3. 101 0011 0001 0001 //load letter code for H
+4. 101 0100 0000 1110 //load letter code for E
+5. 101 0101 0001 0101 //load letter code for L
+6. 101 0110 0001 0101 //load letter code for L
+7. 101 0111 0001 1000 //load letter code for O
+
+//clear alphanumeric display:
+//note that "A0" is my shorthand for "alphanumeric display"
+8. 101 0000 0000 0111 //load position for printing on all displays
+9. 101 0001 0011 1111 //load letter code for blank space
+10. 111 1000 0010 1010 //send letter code to A0
+11. 111 1000 0000 1011 //send position to A0
+
+//print a word
+//characters are stored in regs 3 through 7
+12. 101 0000 0000 0000 //load position for not printing anything
+
+13. 111 1000 0000 1011 //stop screen from printing
+14. 111 1000 0110 1010 //send first letter to A0
+15. 101 0001 0000 0001 //set A0 position to 1
+16. 111 1000 0010 1011 //update position to print letter
+
+17. 111 1000 0000 1011 //stop screen from printing
+18. 111 1000 1000 1010 //send second letter to A0
+19. 100 0001 0010 0000 //increase A0 position to 2
+20. 111 1000 0010 1011 //update position to print letter
+
+21. 111 1000 0000 1011 //stop screen from printing
+22. 111 1000 1010 1010 //send third letter to A0
+23. 100 0001 0010 0000 //increase A0 position to 3
+24. 111 1000 0010 1011 //update position to print letter
+
+25. 111 1000 0000 1011 //stop screen from printing
+26. 111 1000 1100 1010 //send fourth letter to A0
+27. 100 0001 0010 0000 //increase A0 position to 4
+28. 111 1000 0010 1011 //update position to print letter
+
+29. 111 1000 0000 1011 //stop screen from printing
+30. 111 1000 1110 1010 //send fifth letter to A0
+31. 100 0001 0010 0000 //increase A0 position to 5
+32. 111 1000 0010 1011 //update position to print letter
+
+//decrease the "words left counter"
+33. 100 1010 0100 0000 
+
+//if there are no words left, jump ahead to drawing the smiley face
+34. 110 1101 0010 0000 
+
+//otherwise, load the next word and print it
+35. 101 0011 0010 0000 //load letter code for W
+36. 101 0100 0001 1000 //load letter code for O
+37. 101 0101 0001 1011 //load letter code for R
+38. 101 0110 0001 0101 //load letter code for L
+39. 101 0111 0000 1101 //load letter code for D
+40. 110 0001 0000 0000 
+
+//prepare to draw the smiley
+41. 101 0000 0000 0000 //load 0 into reg 0 (also screen opcode for plotting pixel off)
+42. 101 0001 0000 0001 //load 1 into reg 1 (also screen opcode for plotting pixel on)
+43. 101 0010 0000 0010 //load 2 into reg 2
+44. 101 0011 0000 0011 //load 3 into reg 3
+45. 101 0100 0000 0100 //load 4 into reg 4 (also screen opcode for doing nothing)
+46. 101 0101 0000 0101 //load 5 into reg 5
+47. 101 0110 0000 0110 //load 6 into reg 6
+
+//draw the smiley :)
+48. 111 1000 0100 1101 //send left eye x coord
+49. 111 1000 1010 1110 //send left eye y coord
+50. 111 1000 0010 1111 //plot left eye at (2, 5)
+
+51. 111 1000 1010 1101 //plot right eye at (5, 5)
+
+52. 111 1000 0100 1110 //start plotting mouth at (5, 2)
+53. 111 1000 1000 1101 //go left (4, 2)
+54. 111 1000 0110 1101 //go left (3, 2)
+55. 111 1000 0100 1101 //go left (2, 2)
+
+56. 111 1000 1000 1111 //stop printing momentarily
+57. 111 1000 0010 1101 //go to x coord 1
+58. 111 1000 0110 1110 //go to y coord 3
+59. 111 1000 0010 1111 //plot left smile at (1, 3)
+
+60. 111 1000 1100 1101 //plot right smile at (6, 3)
+
+//the end
+61. 110 0111 1010 0000 //stop the program

@@ -1,0 +1,34 @@
+//initialize:
+0. 101 0011 0000 0001 //load mask for A button into reg 3 (0000 0001)
+1. 101 0100 0000 0010 //load mask for B button into reg 4 (0000 0010)
+2. 010 0000 0000 0000 //clear reg 0
+3. 010 0001 0010 0100 //clear reg 1
+4. 010 0010 0100 1000 //clear reg 2
+
+//load the first factor and check for the A button
+5. 101 1000 0000 0000 //load numeric input (factor 0) into reg 0
+6. 111 1000 0000 1100 //display factor 0
+7. 101 1101 0000 0001 //load button input into reg 5
+8. 001 1101 1010 1100 //mask button input for A
+9. 110 1000 1010 0000 //go back if A button is not pressed
+
+//load the second factor and check for the B button
+10. 101 1001 0000 0000 //load numeric input (factor 1) into reg 1
+11. 111 1000 0010 1100 //display factor 1
+12. 101 1101 0000 0001 //load button input into reg 5
+13. 001 1101 1011 0000 //mask button input for B
+14. 110 1001 0100 0000 //go back if B button is not pressed
+
+15. 111 1000 0100 1100 //display 0 while it's busy
+
+//add factor 0 to itself factor 1 times
+16. 011 0010 0000 1000 //add factor 0 to the accumulator
+17. 100 1001 0010 0000 //decrement factor 1
+18. 110 1010 1000 0000 //if factor 1 is 0 go to the end
+19. 110 0010 0000 0000 //otherwise keep accumulating
+
+20. 111 1000 0100 1100 //display the product
+21. 110 0010 1010 0000 //stop
+
+
+

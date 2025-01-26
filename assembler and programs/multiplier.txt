@@ -1,0 +1,34 @@
+//initialize:
+0. LDI 3 1  //load mask for A button into reg 3 (0000 0001)
+1. LDI 4 2  //load mask for B button into reg 4 (0000 0010)
+2. XOR 0 0 0 //clear reg 0
+3. XOR 1 1 1 //clear reg 1
+4. XOR 2 2 2 //clear reg 2
+
+//load the first factor and check for the A button
+5. LDM 0 0  //load numeric input (factor 0) into reg 0
+6. STM 0 12 //display factor 0
+7. LDM 5 1  //load button input into reg 5
+8. AND 5 5 3 //mask button input for A
+9. JIZ 5    //go back if A button is not pressed
+
+//load the second factor and check for the B button
+10. LDM 1 0   //load numeric input (factor 1) into reg 1
+11. STM 1 12 //display factor 1
+12. LDM 5 1  //load button input into reg 5
+13. AND 5 5 4 //mask button input for B
+14. JIZ 10  //go back if B button is not pressed
+
+15. STM 2 12 //display 0 while it's busy
+
+//add factor 0 to itself factor 1 times
+16. ADD 2 0 2  //add factor 0 to the accumulator
+17. DEC 1 1  //decrement factor 1
+18. JIZ 20  //if factor 1 is 0 go to the end
+19. JMP 16 //otherwise keep accumulating
+
+20. STM 2 12 //display the product
+21. JMP 21  //stop
+
+
+

@@ -1,0 +1,13 @@
+//initialize 1 and 0
+0. XOR 7 7 7 //display 0 in reg 7
+1. MOV 0 7 //put 0 in reg 0
+2. INC 7 7 //display 1 in reg 7
+3. MOV 1 7 //put 1 in reg 1
+
+//loop
+4. ADD 7 0 1 //add the two terms and display the sum
+5. SUB 6 7 1  //subtract the most recent term from the sum
+6. JIN 0  //if that's negative, start over; otherwise
+7. MOV 0 1  //put more recent term in reg 0
+8. MOV 1 7  //put sum in reg 1
+9. JMP 4  //keep adding

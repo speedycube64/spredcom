@@ -1,0 +1,5 @@
+//this program prints funny number
+
+
+0. LDI 0 69 //load the funny number in reg 0
+1. STM 0 12	// put the funny number onto the screen

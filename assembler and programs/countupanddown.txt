@@ -1,0 +1,14 @@
+//initialize registers:
+0. LDI 0 0 //load a 0 into reg 0
+1. LDI 1 10 //load a 10 into reg 1
+
+//first loop (count up):
+2. INC 0 0 //increment the value of reg 0
+3. SUB 2 0 1 //subtract 10 from the value of reg 0
+4. JIZ 6 //if the result is 0, start counting down
+5. JMP 2 //otherwise, keep counting up
+
+//second loop (count down):
+6. DEC 0 0 //decrement the value of reg 0
+7. JIZ 2 //if reg 0 is 0, start counting up
+8. JMP 6 //otherwise, keep counting down
