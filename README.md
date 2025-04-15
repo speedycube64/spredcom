@@ -4,7 +4,7 @@ An 8-bit redstone computer built in survival Minecraft
 # Showcase Videos
 [Main Video](https://youtu.be/eiUsxeEPTxg) (clean) - shows the process of learning logical redstone, designing the computer in creative mode, gathering the materials, tediously building and debugging it in survival, and then begging for subs for my hard work.
 
-[Supplementary Video](https://youtu.be/PHiXify_t88) - includes more in-depth explanations of how each component works, how the programs work, and how to make programs on the computer yourself. Also includes some of my final thoughts on the making of the video itself.
+[Supplementary Video](https://youtu.be/PHiXify_t88) (contains mild swearing) - includes more in-depth explanations of how each component works, how the programs work, and how to make programs on the computer yourself. Also includes some of my final thoughts on the making of the video itself.
 
 # Internal Specs
 - 8-bit ALU with 12 different operations
@@ -77,3 +77,5 @@ Some miscellaneous redstone help came from [Mumbo Jumbo](https://www.youtube.com
 My team of early access reviewers for the main video includes [Contranaut](https://www.youtube.com/@iPodBen), [eewalktub](https://www.youtube.com/@eewalktub8907), [jr5000](https://www.youtube.com/@jr5000pwp), and [SchmidtPlays](https://www.youtube.com/@schmidt1816).
 
 Editing inspiration for the main video came from [Testable](https://www.youtube.com/@testableyt), [RedPenGuin111](https://www.youtube.com/@redpenguin111), and [rekrap2](https://www.youtube.com/@rekrap2). The first two are also contributors to said video.
+
+Lastly, thanks to the ECE department at my school for getting me interested in hardware design in the first place.
