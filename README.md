@@ -64,4 +64,16 @@ The following is also covered at [58:36](https://youtu.be/PHiXify_t88?t=3516) in
   - If necessary, use the debug switch (on the lower gold platform) to switch to debug mode, where you can manually go one line at a time
   - If even further debugging is needed, use the switches on the program counter (which is colored magenta) to force the program to jump to an exact instruction
 
+# Possible Improvements
+There is a library called [mcschematic](https://pypi.org/project/mcschematic/) to procedurally generate schematics that can be pasted into a world. This has potential to eliminate the tedious process of manually placing repeaters to program the computer in creative mode. However, since the main point of the project was to build it in survival with no mods, for which this library would not help much, I have not looked into it yet.
 
+This is my first (and possibly only) redstone computer, and as such, its design is quite inefficient. Other redstone computers exist with clock periods as fast as 3 Hz, whereas mine is 0.1 Hz. My computer could also benefit from other types of instructions such as branching with offsets.
+
+# Special Thanks
+First and foremost, the [old](https://www.youtube.com/playlist?list=PL5LiOvrbVo8ksCgm_HTLfwhHRdnx11Gms) and [new](https://www.youtube.com/playlist?list=PL5LiOvrbVo8keeEWRZVaHfprU4zQTCsV4) Logical Redstone series by mattbatwings were incredibly helpful places for me to start. If it were not for this series, the build would probably be 10 times bigger.
+
+Some miscellaneous redstone help came from [Mumbo Jumbo](https://www.youtube.com/watch?v=fBdC1pvxfI0) and [ianxofour](https://youtu.be/n3mOlrMGjUg).
+
+My team of early access reviewers for the main video includes [Contranaut](https://www.youtube.com/@iPodBen), [eewalktub](https://www.youtube.com/@eewalktub8907), [jr5000](https://www.youtube.com/@jr5000pwp), and [SchmidtPlays](https://www.youtube.com/@schmidt1816).
+
+Editing inspiration for the main video came from [Testable](https://www.youtube.com/@testableyt), [RedPenGuin111](https://www.youtube.com/@redpenguin111), and [rekrap2](https://www.youtube.com/@rekrap2). The first two are also contributors to said video.
