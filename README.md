@@ -1,6 +1,8 @@
 # Speedy's Redstone Computer
 An 8-bit redstone computer built in survival Minecraft
 
+![image](https://github.com/user-attachments/assets/e662cd49-56a4-44ec-b541-af078b513c5d)
+
 # Showcase Videos
 [Main Video](https://youtu.be/eiUsxeEPTxg) (clean) - shows the process of learning logical redstone, designing the computer in creative mode, gathering the materials, tediously building and debugging it in survival, and then begging for subs for my hard work.
 
